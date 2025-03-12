@@ -12,7 +12,10 @@ import { animateWithGsapTimeline } from "../utils/animations";
 
 const Model = () => {
 
-  const modelPath = "/Apple/models/scene.glb"; // ✅ Include GitHub repo name!
+  const modelPath = process.env.NODE_ENV === "development" 
+  ? "/models/scene.glb"  // Local development
+  : "/Apple/models/scene.glb";  // GitHub Pages
+
 
   const loader = new THREE.GLTFLoader();
   loader.load(modelPath, (gltf) => {
